@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
 ## Como usar o loader
 
 O arquivo `scripts/loader.py` contém uma função flexível para carregar qualquer arquivo master do MERGE, permitindo filtros por split, quadrante, ano, artista, título e gêneros.
