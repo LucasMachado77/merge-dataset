@@ -14,7 +14,10 @@ O repositório está organizado da seguinte forma:
     -   Notebooks de ETL (`audio_balanced.ipynb`, etc.): Scripts responsáveis por transformar os dados brutos nos ficheiros master da pasta `/metadata`.
 -   **/schema**: Inclui o dicionário de dados (`data_dictionary.md`).
 -   **/imagens_relatorio**: Contém as visualizações geradas e utilizadas no relatório.
--   `relatorio_merge_dataset.md`: O relatório final do projeto com a análise detalhada.
+-   `relatorio_merge_dataset.md`: O ficheiro fonte em Markdown do relatório final do projeto.
+-   `relatorio_merge_dataset.pdf`: O ficheiro PDF do relatório final do projeto.
+-   `CHANGELOG.md`: Registo de alterações e versões do projeto.
+-   `README.md`: Este ficheiro. Apresenta uma visão geral do projeto e as instruções de uso.
 
 ## 2. Como Executar o Projeto
 

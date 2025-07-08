@@ -2,7 +2,7 @@
 
 ## 1. Introdução
 
-O MERGE Dataset é um recurso público e multimodal para a tarefa de Reconhecimento de Emoção em Música (MER), contendo áudio, letras e anotações emocionais. No entanto, a sua organização original, distribuída em múltiplos ficheiros ZIP com diferentes subconjuntos, apresentava desafios significativos para a sua utilização. Problemas como a fragmentação dos dados, inconsistências na nomenclatura de colunas e a ausência de um esquema de dados unificado dificultavam o uso por parte de investigadores e entusiastas.
+O MERGE Dataset foi usado para a tarefa de Reconhecimento de Emoção em Música (MER), contendo áudio, letras e anotações emocionais. No entanto, a sua organização original, distribuída em múltiplos ficheiros ZIP com diferentes subconjuntos, apresentava desafios significativos para a sua utilização. Problemas como a fragmentação dos dados, inconsistências na nomenclatura de colunas e a ausência de um esquema de dados unificado dificultavam o uso por parte de investigadores e entusiastas.
 
 Este projeto teve como objetivo principal endereçar estes problemas através de um processo de engenharia de dados, refatorando o dataset para melhorar a sua usabilidade, reprodutibilidade e integração com ferramentas modernas de análise de dados.
 
@@ -36,7 +36,7 @@ Utilizando a função de carregamento desenvolvida, foi realizada uma análise e
 
 ## 4. Resultados
 
-A análise exploratória, realizada no subconjunto `audio_balanced`, revelou as seguintes características:
+A análise exploratória, realizada no subconjunto `master_metadata_audio_balanced`, revelou as seguintes características:
 
 ### 4.1. Análise da Distribuição de Classes e Emoções
 
