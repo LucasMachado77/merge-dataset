@@ -1,51 +1,69 @@
-## Como usar o loader
+# Projeto 1: ETL, Exploração e Redesign do MERGE Dataset
 
-O arquivo `scripts/loader.py` contém uma função flexível para carregar qualquer arquivo master do MERGE, permitindo filtros por split, quadrante, ano, artista, título e gêneros.
-Para ver todos os metadados disponíveis para filtro, consulte `schema/data_dictionary.md` ou use `df.columns` após o load.
+Este projeto realiza um processo completo de Engenharia de Dados sobre o MERGE Dataset, um conjunto de dados para Reconhecimento de Emoção em Música. O trabalho inclui a extração, transformação e carga (ETL) dos dados originais, a refatoração da sua estrutura, a criação de um loader modular e uma análise exploratória detalhada.
 
-**Exemplo básico:**
+## 1. Estrutura do Projeto
+
+O repositório está organizado da seguinte forma:
+
+-   **/data**: Pasta designada para conter os dados brutos do MERGE dataset após o download.
+-   **/metadata**: Armazena os ficheiros de metadados consolidados e padronizados (`master_metadata_...csv`) gerados pelo processo de ETL.
+-   **/scripts**: Contém todos os scripts e notebooks de processamento.
+    -   `loader.py`: Módulo principal para carregar os dados consolidados de forma flexível.
+    -   `EDA.ipynb`: Notebook com a Análise Exploratória de Dados.
+    -   Notebooks de ETL (`audio_balanced.ipynb`, etc.): Scripts responsáveis por transformar os dados brutos nos ficheiros master da pasta `/metadata`.
+-   **/schema**: Inclui o dicionário de dados (`data_dictionary.md`).
+-   **/imagens_relatorio**: Contém as visualizações geradas e utilizadas no relatório.
+-   `relatorio_merge_dataset.md`: O relatório final do projeto com a análise detalhada.
+
+## 2. Como Executar o Projeto
+
+### Pré-requisitos
+
+Certifique-se de que tem Python 3 e o ambiente Jupyter instalados. As principais bibliotecas utilizadas são:
+
+-   pandas
+-   matplotlib
+-   seaborn
+
+Pode instalar todas as dependências com o seguinte comando:
+
+```bash
+pip install pandas matplotlib seaborn jupyterlab
+```
+
+### Ordem de Execução
+
+1.  **(Opcional) Executar os Scripts de ETL:** Os ficheiros `master_metadata_...csv` já estão gerados e incluídos na pasta `/metadata`. Se quiser gerá-los novamente, execute os notebooks correspondentes na pasta `/scripts` (ex: `audio_balanced.ipynb`). *Nota: será necessário ajustar os caminhos dos ficheiros de dados brutos dentro de cada notebook.*
+
+2.  **Executar a Análise Exploratória:**
+    * Abra o ambiente Jupyter Lab ou Jupyter Notebook na pasta raiz do projeto.
+    * Navegue e abra o ficheiro `EDA.ipynb`.
+    * No menu, selecione `Run` > `Run All Cells` para executar a análise e gerar todas as visualizações.
+
+### Usando o Loader
+
+O script `scripts/loader.py` permite carregar qualquer subconjunto de dados de forma programática.
+
+**Exemplo de uso:**
+
 ```python
 from scripts.loader import load_merge_master
 
-# Carregar músicas do split de treino do quadrante 1 em 2010 do gênero 'pop'
-df = load_merge_master(
+# Carregar o subconjunto de áudio balanceado
+df = load_merge_master('metadata/master_metadata_audio_balanced.csv')
+
+# Carregar apenas os dados de treino do quadrante 1
+df_filtrado = load_merge_master(
     'metadata/master_metadata_audio_balanced.csv',
     split='train',
     split_type='split_70_15_15',
-    quadrant=1,
-    year=2010,
-    genres='pop'
+    quadrant=1
 )
-print(df.head())
 
+print(df_filtrado.head())
+```
 
-## Exemplo de uso do loader.py
+## 3. Relatório Final
 
-```python
-from scripts.loader import load_merge_master
-
-# Carregar todos os dados de treino de 2010 a 2012 do quadrante 1 e do gênero 'rock'
-df = load_merge_master(
-    'metadata/master_metadata_audio_balanced.csv',
-    split='train',
-    split_type='split_70_15_15',
-    year=[2010, 2011, 2012],
-    quadrant=1,
-    genres='rock'
-)
-print(df[['song_id', 'artist', 'title', 'quadrant', 'year', 'genres']].head())
-
-# Buscar por artista específico (busca parcial e case-insensitive)
-df_adele = load_merge_master(
-    'metadata/master_metadata_audio_balanced.csv',
-    artist='adele'
-)
-print(df_adele[['song_id', 'artist', 'title']].head())
-
-# Filtrar por múltiplos quadrantes ou gêneros
-df_multi = load_merge_master(
-    'metadata/master_metadata_audio_balanced.csv',
-    quadrant=[1, 3],
-    genres=['pop', 'rock']
-)
-print(df_multi[['song_id', 'artist', 'quadrant', 'genres']].head())
+O relatório detalhado do projeto, incluindo a análise das visualizações, pode ser encontrado no ficheiro `relatorio_merge_dataset.md` e a sua versão final em `relatorio_merge_dataset.pdf`.
