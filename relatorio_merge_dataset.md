@@ -78,10 +78,17 @@ A Figura 6 mostra que o dataset possui uma grande variedade temporal, com músic
 
 O mapa de dados faltantes (Figura 7) indica que os campos centrais para a tarefa de classificação (ID da música e valores emocionais) estão 100% completos. No entanto, muitos metadados secundários, como 'themes' e 'styles', são esparsos. Uma observação crítica é a ausência de dados nas colunas de 'split', indicando um problema na consolidação deste subconjunto específico, o que exigiria atenção antes de treinar um modelo.
 
+### 4.4. Análise de Correlação
+
+![Figura 8: Matriz de Correlação](imagens_relatorio/figura8_matriz_correlacao.png)
+
+Para aprofundar a análise, foi gerada uma matriz de correlação entre as variáveis numéricas do dataset (Figura 8). Os resultados revelaram uma correlação negativa moderada (-0.55) entre a relevância da música e o número de 'moods' associados, e uma correlação positiva moderada (0.53) entre o número de gêneros e o número de 'moods'. Notavelmente, a correlação entre arousal e valence foi muito baixa (0.11), validando a sua independência como eixos emocionais. A análise também confirmou a ausência de dados nas colunas de 'split' para este subconjunto.
 
 ## 5. Discussão
 
 O trabalho realizado melhorou substancialmente a usabilidade do MERGE Dataset. A principal melhoria foi a **centralização da informação**. Dados antes espalhados por múltiplos ficheiros foram consolidados num único ficheiro master por subconjunto, eliminando a necessidade de processos manuais de fusão por parte do utilizador final. A **padronização** dos nomes de colunas e a criação do **loader** (`scripts/loader.py`) abstraem a complexidade, permitindo o acesso aos dados de forma intuitiva e programática.
+
+Para além da análise exploratória, foi executado um script de validação (conferir_existencia.ipynb) para garantir a integridade referencial entre os metadados e os ficheiros de dados. O script confirmou a existência de todos os ficheiros de áudio e de letras nos seus respetivos subconjuntos puros. No entanto, uma descoberta importante foi a deteção de 219 ficheiros de letras em falta nos subconjuntos bimodais, revelando uma inconsistência nos dados originais que poderia impactar estudos focados nesta modalidade."
 
 As **visualizações** foram cruciais para a validação do trabalho e para a compreensão do dataset. O gráfico de dispersão (Figura 2), por exemplo, validou visualmente a correta atribuição dos quadrantes. Por outro lado, o mapa de dados faltantes (Figura 7) revelou um problema crítico com as colunas de `split` no ficheiro gerado, uma descoberta que não seria trivial sem a visualização.
 

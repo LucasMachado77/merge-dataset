@@ -11,7 +11,8 @@ O repositório está organizado da seguinte forma:
 -   **/scripts**: Contém todos os scripts e notebooks de processamento.
     -   `loader.py`: Módulo principal para carregar os dados consolidados de forma flexível.
     -   `EDA.ipynb`: Notebook com a Análise Exploratória de Dados.
-    -   Notebooks de ETL (`audio_balanced.ipynb`, etc.): Scripts responsáveis por transformar os dados brutos nos ficheiros master da pasta `/metadata`.
+    -   `conferir_existencia.ipynb`: Script de validação para verificar a integridade referencial entre os metadados e os ficheiros de dados.
+    -   Notebooks de ETL (`audio_balanced.ipynb`, `lyrics_complete.ipynb`, etc.): Scripts responsáveis por transformar os dados brutos nos ficheiros master da pasta `/metadata`.
 -   **/schema**: Inclui o dicionário de dados (`data_dictionary.md`).
 -   **/imagens_relatorio**: Contém as visualizações geradas e utilizadas no relatório.
 -   `relatorio_merge_dataset.md`: O ficheiro fonte em Markdown do relatório final do projeto.
